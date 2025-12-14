@@ -80,18 +80,21 @@ If --stats is given:
 
 ### Small positive (satisfiable) humanly readable instance:
 - n = 4, k = 2.
+```
 SAT
 B B . .
 . . . W
 . . . .
 . . W .
-
+```
 ### Small negative (unsatisfiable) humanly readable instance:
 - k = n = 2
+```
 UNSAT
-
+```
 ### Nontrivial satisfiable instance: unconfirmable
 I tried n = 7, k = 5 and it took 6.31s which is under the minimum requirement. However, I tried more complex instances such as n = 8, 8, 7, 7 and k = 8, 7, 7, 6 respectively and they all timed out. 
+```
 SAT
 B B . . B B B
 . . . . . . .
@@ -99,7 +102,7 @@ B B . . B B B
 . . . . . . .
 . . . W . . .
 . . W W . . .
-
+```
 ## Experiment report:
 
 The n = 7, k = 5 instance was solve with Glucose CPU time ≈ 5.1s as reported in the solver statistics. In reality, my script's python CNF generation time took much longer since the method that I collect CNF clauses with grows really fast with n and k. For n = 7, k = 5, the generated formula has 98 variables and about 28.4 million clauses, and the resulting DIMACS file size is roughly 0.76 GB. This tells us that the that the naive encoding I used leads to an enormous number of clauses, and better encoding methods must be used if we seek to scale the variables on this problem further.
