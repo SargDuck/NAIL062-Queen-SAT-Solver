@@ -80,12 +80,25 @@ If --stats is given:
 
 ### Small positive (satisfiable) humanly readable instance:
 - n = 4, k = 2.
+SAT
+B B . .
+. . . W
+. . . .
+. . W .
 
 ### Small negative (unsatisfiable) humanly readable instance:
 - k = n = 2
+UNSAT
 
 ### Nontrivial satisfiable instance: unconfirmable
 I tried n = 7, k = 5 and it took 6.31s which is under the minimum requirement. However, I tried more complex instances such as n = 8, 8, 7, 7 and k = 8, 7, 7, 6 respectively and they all timed out. 
+SAT
+B B . . B B B
+. . . . . . .
+. . . . . . .
+. . . . . . .
+. . . W . . .
+. . W W . . .
 
 ## Experiment report:
 
