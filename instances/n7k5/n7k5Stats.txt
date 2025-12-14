@@ -1,0 +1,94 @@
+## Program Documentation:
+### Input Format:
+- --n <int>: size of the chessboard (n x n).
+- --k <int>: number of queens per army.
+- --cnf <path> (optional): path to output the CNF formula in DIMACS format.
+- --instance <path> (optional): load instance parameters from a file with two lines: n and k.
+- --solve: run the Glucose solver on the generated CNF.
+- --stats: print solver statistics (must run with --solve).
+
+### Output Format:
+
+If SAT:
+- Prints "SAT"
+- Prints a board configuration showing the placement of white (W) and black (B) queens, and empty cells (.).
+
+If UNSAT:
+- Prints "UNSAT"
+
+If --stats is given:
+- Prints solver statistics reported by Glucose after the solution.
+
+## Instances:
+
+### Small positive (satisfiable) humanly readable instance:
+- n = 4, k = 2.
+
+### Small negative (unsatisfiable) humanly readable instance:
+- k = n = 2
+
+### Nontrivial satisfiable instance: unconfirmable
+I tried n = 7, k = 5 and it took 6.31s which is under the minimum requirement. However, I tried more complex instances such as n = 8, 8, 7, 7 and k = 8, 7, 7, 6 respectively and they all timed out. 
+
+## Experiment report:
+
+The n = 7, k = 5 instance was done in 5.1s during the glucose part of the program. In reality, it took much longer since the method that I collect CNF clauses with grows really fast. I'm sure there are ways to collect CNF clauses much more efficiently but I don't believe that it is within my skill level. It is also worth noting that python probably plays a role in why the program is slow and would run better in C# or a similary well optimized language.
+
+The cnf files and stats for the instances are in the instances folder.
+
+Also, this is the glucose stats of n7k5, 
+
+Solver Stats:
+c This is glucose 4.2.1 --  based on MiniSAT (Many thanks to MiniSAT team)
+c ========================================[ Problem Statistics ]===========================================
+c |                                                                                                       |
+c |  Number of variables:            98                                                                   |
+c |  Number of clauses:        28392385                                                                   |
+c |  Parse time:                   3.97 s                                                                 |
+c |                                                                                                       |
+c | Preprocesing is fully done
+c Too many clauses... No preprocessing
+c |  Simplification time:          0.68 s                                                                 |
+c |                                                                                                       |
+c ========================================[ MAGIC CONSTANTS ]==============================================
+c | Constants are supposed to work well together :-)                                                      |
+c | however, if you find better choices, please let us known...                                           |
+c |-------------------------------------------------------------------------------------------------------|
+c | Adapt dynamically the solver after 100000 conflicts (restarts, reduction strategies...)               |
+c |-------------------------------------------------------------------------------------------------------|
+c |                                |                                |                                     |
+c | - Restarts:                    | - Reduce Clause DB:            | - Minimize Asserting:               |
+c |   * LBD Queue    :     50      |   * First     :   2000         |    * size <  30                     |
+c |   * Trail  Queue :   5000      |   * Inc       :    300         |    * lbd  <   6                     |
+c |   * K            :   0.80      |   * Special   :   1000         |                                     |
+c |   * R            :   1.40      |   * Protected :  (lbd)< 30     |                                     |
+c |                                |                                |                                     |
+c ==================================[ Search Statistics (every  10000 conflicts) ]=========================
+c |                                                                                                       |
+c |          RESTARTS           |          ORIGINAL         |              LEARNT              | Progress |
+c |       NB   Blocked  Avg Cfc |    Vars  Clauses Literals |   Red   Learnts    LBD2  Removed |          |
+c =========================================================================================================
+c last restart ## conflicts  :  6 59
+c =========================================================================================================
+c restarts              : 1 (6 conflicts in avg)
+c blocked restarts      : 0 (multiple: 0)
+c last block at restart : 0
+c nb ReduceDB           : 0
+c nb removed Clauses    : 0
+c average learnt size   : 48
+c nb learnts DL2        : 0
+c nb learnts size 2     : 0
+c nb learnts size 1     : 0
+c conflicts             : 6              (1 /sec)
+c decisions             : 66             (0.00 % random) (13 /sec)
+c propagations          : 182            (36 /sec)
+c nb reduced Clauses    : 0
+c LCM                   : 0 / 0
+c CPU time              : 5.08797 s
+SAT
+B B . . B B B
+. . . . . . .
+. . . . . . .
+. . . . . . .
+. . . W . . .
+. . W W . . .
