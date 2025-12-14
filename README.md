@@ -93,4 +93,4 @@ The n = 7, k = 5 instance was solve with Glucose CPU time ≈ 5.1s as reported i
 
 The CNF files and solver statistics for each instances are in the "instances" folder. 
 
-(NOTE: I wasn't able to upload the n7k5.cnf (760 MB) file to Github as they have a 100MB file limit. I replaced the file with screenshots of the first few lines, last few lines, and size of the file. You can generate the cnf with "python QueenSolver.py --n 7 --k 5 --cnf n7k5.cnf" but it will take some time)
+(NOTE: I wasn't able to upload the n7k5.cnf (760 MB) file to Github as they have a 100MB file limit. I replaced the file with screenshots of the first few lines, last few lines, and size of the file. You can generate the .cnf file with "python QueenSolver.py --n 7 --k 5 --cnf n7k5.cnf" but it will take some time)
