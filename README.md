@@ -91,4 +91,6 @@ I tried n = 7, k = 5 and it took 6.31s which is under the minimum requirement. H
 
 The n = 7, k = 5 instance was solve with Glucose CPU time ≈ 5.1s as reported in the solver statistics. In reality, my script's python CNF generation time took much longer since the method that I collect CNF clauses with grows really fast with n and k. For n = 7, k = 5, the generated formula has 98 variables and about 28.4 million clauses, and the resulting DIMACS file size is roughly 0.76 GB. This tells us that the that the naive encoding I used leads to an enormous number of clauses, and better encoding methods must be used if we seek to scale the variables on this problem further.
 
-The CNF files and solver statistics for each instances are in the "instances" folder.
+The CNF files and solver statistics for each instances are in the "instances" folder. 
+
+(NOTE: I wasn't able to upload the n7k5.cnf (760 MB) file to Github as they have a 100MB file limit. I replaced the file with screenshots of the first few lines, last few lines, and size of the file. You can generate the cnf with "python QueenSolver.py --n 7 --k 5 --cnf n7k5.cnf" but it will take some time)
